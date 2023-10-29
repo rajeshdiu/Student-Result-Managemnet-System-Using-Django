@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-body">
+             <form  action=" {% url 'addSession' %} "  method="post" enctype="multipart/form-data">
+               {% csrf_token %}
+                <div class="row">
+                   <div class="col-12">
+                      <h5 class="form-title"><span>Add Session</span></h5>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                       <label>Session Year Start</label>
+                       <div>
+                          <input type="date" class="form-control" name="session_start" required>
+                       </div>
+                    </div>
+                 </div>
+
+                 <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                       <label>Session Year End</label>
+                       <div>
+                          <input type="date" class="form-control"  name="session_end" required>
+                       </div>
+                    </div>
+                 </div>
+                   
+                   <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Add Session</button>
+                   </div>
+                   <div class="col-12">
+                     {% include 'includes/message.html' %}
+                  </div>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>
+    
+{% endblock  %}
+    

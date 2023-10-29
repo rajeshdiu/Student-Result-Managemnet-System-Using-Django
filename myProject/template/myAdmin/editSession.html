@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-body">
+             <form  action=" {% url 'updateSession' %} "  method="post" enctype="multipart/form-data">
+   
+               {% csrf_token %}
+               
+                <div class="row">
+                   <div class="col-12">
+                      <h5 class="form-title"><span>Edit Session</span></h5>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                       <label>Session Year Start</label>
+                       <div>
+                          <input  type="text" class="form-control" name="session_start" value="{% for s in session %} {{s.sessionStart}}  {% endfor %}" required>
+                       </div>
+                    </div>
+                 </div>
+
+                 <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                     <label>Session Year End</label>
+                     <div>
+                        <input  type="text" class="form-control"  name="session_end" value="{% for s in session %} {{s.sessionEnd}}  {% endfor %}" required>
+                     </div>
+                  </div>
+               </div>
+
+                 <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                       <label>Session ID</label>
+                       <div>
+                          <input  type="text" class="form-control"  name="session_id" value="{% for s in session %} {{s.id}}  {% endfor %}" hidden>
+                       </div>
+                    </div>
+                 </div>
+                   
+                   <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Update Session</button>
+                   </div>
+                   <div class="col-12">
+                     {% include 'includes/message.html' %}
+                  </div>
+                </div>
+                   
+               
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>
+    
+{% endblock  %}
+    

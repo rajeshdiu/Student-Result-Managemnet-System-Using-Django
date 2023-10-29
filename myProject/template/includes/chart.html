@@ -1,0 +1,133 @@
+<script>
+
+    $(document).ready(function() {
+
+        // Pie chart
+
+        var options = {
+            series: [{{studentCount}}, {{teacherCount}}, {{departmentCount}}, {{subjectCount}}],
+            chart: {
+                height: 350,
+                width: '100%',
+            type: 'pie',
+          },
+          labels: ['Student', 'Teacher', 'Department', 'Subject'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+          };
+  
+          var chart = new ApexCharts(document.querySelector("#allDetails"), options);
+          chart.render();
+        
+        
+      
+     
+    
+        // Bar chart
+        
+        if ($('#Student_bar').length > 0) {
+        var optionsBar = {
+            chart: {
+                type: 'bar',
+                height: 350,
+                width: '100%',
+                stacked: true,
+                toolbar: {
+                    show: false
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '45%',
+                }
+            },
+            series: [{
+                name: "Boys",
+                color: '#fdbb38',
+                data: [{{student_male_count}}],
+            }, {
+                name: "Girls",
+                color: '#19affb',
+                data: [{{student_female_count}}],
+            }],
+            labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+            xaxis: {
+                labels: {
+                    show: false
+                },
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+            },
+            yaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: '#777'
+                    }
+                }
+            },
+            title: {
+                text: '',
+                align: 'left',
+                style: {
+                    fontSize: '18px'
+                }
+            }
+    
+        }
+      
+        var chartBar = new ApexCharts(document.querySelector('#Student_bar'), optionsBar);
+        chartBar.render();
+        }
+
+
+
+
+          
+        var options = {
+            series: [{{studentCount}}, {{teacherCount}}],
+            chart: {
+            type: 'donut',
+          },
+          labels: ['Student', 'Teacher'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+          };
+  
+          var chart = new ApexCharts(document.querySelector("#Student_teacher_allDetails"), options);
+          chart.render();
+        
+      
+    });
+
+</script>
